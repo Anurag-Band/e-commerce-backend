@@ -58,7 +58,7 @@ userSchema.pre("save", async function (next) {
 
 // 3 ->> isValidatedPassword() -> validate password with passed on user password
 userSchema.methods.isValidatedPassword = async function (userSendPassword) {
-  return await bcrypt.compare(this.password, userSendPassword);
+  return await bcrypt.compare(userSendPassword, this.password);
 };
 
 // 4 ->> getJwtToken() -> create and return JWT Token -> "_id" of database is to be passed
